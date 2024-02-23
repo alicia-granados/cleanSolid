@@ -6,4 +6,13 @@ export class HttpClient {
         console.log({status})
         return {data,status};
     }
+    /* Si sr removiera axios  se pudiera hacer asi 
+    async get(url:string){
+
+        const resp = await fetch(url);
+        const data = await resp.json();
+        return{ data :'' , status:500}
+    }
+    */
+   
 }
