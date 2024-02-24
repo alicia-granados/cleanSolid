@@ -1,4 +1,11 @@
 import localPost from '../data/localDatabse.json';
+import { Post } from './05-dependencyB';
+
+export abstract class PostProvider {
+
+    abstract getPosts(): Promise<Post[]>
+
+}
 
 export class LocalDataBaseService {
     async getFakePosts() {
@@ -24,3 +31,13 @@ export class JsonDataBaseService{
         return localPost;
     }
 }
+
+export class WebApiPostService implements PostProvider {
+    
+    async getPosts(): Promise<Post[]> {
+        const resp = await fetch('https://jsonplaceholder.typicode.com/posts');
+        return await resp.json();
+    }
+
+}
+// https://jsonplaceholder.typicode.com/posts
